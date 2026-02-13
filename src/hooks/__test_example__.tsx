@@ -4,7 +4,7 @@
 import { useSymbolData } from './useSymbolData';
 
 function SymbolExample() {
-  const { ticker, quote, isLoading, error } = useSymbolData('AAPL');
+  const { quote, isLoading, error } = useSymbolData('AAPL');
 
   if (isLoading) {
     return <div>Loading quote data...</div>;
