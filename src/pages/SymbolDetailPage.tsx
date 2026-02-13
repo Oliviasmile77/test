@@ -5,11 +5,10 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { SymbolTab } from '../types/symbol';
+import { SymbolDetailTabs } from '../components/symbol-detail/SymbolDetailTabs';
 
 export function SymbolDetailPage() {
   const { ticker } = useParams<{ ticker: string }>();
-  const [activeTab, setActiveTab] = useState<SymbolTab>('overview');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -64,38 +63,7 @@ export function SymbolDetailPage() {
 
   return (
     <div className="symbol-detail-page">
-      {/* Header Placeholder - Will be replaced by SymbolHeader component */}
-      <div className="symbol-header-placeholder">
-        <h1>{ticker.toUpperCase()}</h1>
-        <p>Symbol Header Component (Stream B)</p>
-      </div>
-
-      {/* Tabs Placeholder - Will be replaced by SymbolTabs component */}
-      <div className="symbol-tabs-placeholder">
-        <div className="tabs-nav">
-          <button
-            className={activeTab === 'overview' ? 'active' : ''}
-            onClick={() => setActiveTab('overview')}
-          >
-            Overview
-          </button>
-          <button
-            className={activeTab === 'chart' ? 'active' : ''}
-            onClick={() => setActiveTab('chart')}
-          >
-            Chart
-          </button>
-          <button
-            className={activeTab === 'options' ? 'active' : ''}
-            onClick={() => setActiveTab('options')}
-          >
-            Options
-          </button>
-        </div>
-        <div className="tab-content">
-          <p>Tab: {activeTab} - Components coming from Stream C</p>
-        </div>
-      </div>
+      <SymbolDetailTabs />
     </div>
   );
 }
